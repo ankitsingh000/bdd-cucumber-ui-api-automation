@@ -8,10 +8,8 @@ import utils.SeleniumUtil;
 
 public class AmazonDashboard {
 
-
     public AmazonDashboardPage amazonDashboardPage = new AmazonDashboardPage();
     public ProductsDashboardPage productsDashboardPage = new ProductsDashboardPage();
-
     @When("User search for an {string} to add in Cart")
     public void user_search_for_an_item_to_add_in_cart(String product){
         amazonDashboardPage.searchForProduct().sendKeys(product);
@@ -25,17 +23,10 @@ public class AmazonDashboard {
         String actualProductName=productsDashboardPage.productName().getText();
         productsDashboardPage.addToCart().click();
         productsDashboardPage.closeSideMenu().click();
-
     };
 
     @When("User Click on the cart icon to view the cart page")
     public void user_click_on_the_cart_icon_to_view_the_cart_page(){
         amazonDashboardPage.javaScriptExecutor(amazonDashboardPage.cartIcon());
     };
-
-
-
-
-
-
 }

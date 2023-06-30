@@ -9,17 +9,14 @@ import io.restassured.response.Response;
 import io.restassured.response.ResponseOptions;
 import org.hamcrest.Matchers;
 import utils.AssertionsUtility;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-
 public class APISteps {
+
     private static ResponseOptions<Response> response;
-
-
 
     @Given("User Performs Put Operation on {string} resource to update the user details having {string}")
     public void userPerformsPutOperationOnResourceToUpdateTheUserDetailsHavingAs(String arg0, String arg1) {
@@ -35,7 +32,6 @@ public class APISteps {
         String pathParameterKey=data.get(0).get(0);
         String pathParameterValue=data.get(1).get(0);
         response=RestAssuredExtension.PutWithPathParameterAndBody(pathParameterKey,pathParameterValue,body);
-
     }
 
     @Then("Status code should be {string}")
@@ -49,6 +45,7 @@ public class APISteps {
     public void userPerformsDeleteOperationOnResourceToDeleteTheUserDetails(String arg0,String arg1) {
         RestAssuredExtension.setUrl(arg0+arg1);
     }
+
     @When("user inputs the following {string}")
     public void userInputsTheFollowing(String pathParams) {
         response=RestAssuredExtension.DeleteOpsWithPathParams(pathParams);

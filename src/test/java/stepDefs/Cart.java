@@ -5,15 +5,14 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebElement;
 import pageObjects.CartPage;
 import utils.AssertionsUtility;
-
 import java.util.List;
 
 public class Cart {
+
     CartPage cartPage = new CartPage();
     @Then("User should be able to see selected {string} in cart")
     public void user_should_be_able_to_see_selected_item_in_cart(String product){
         String actualProduct = cartPage.getProductName().get(0).getText();
-
         AssertionsUtility.getSoftAssert().assertEquals(actualProduct.trim(),product.trim(),"Same Product Not added to cart");
     };
 
