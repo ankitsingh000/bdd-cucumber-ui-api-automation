@@ -8,4 +8,4 @@ Feature: Login Test
 		Then Verify that the "<user>" is successfully logged in
 		Examples:
 			| username   | password    | user         |
-			| 9330850753 | Mumbai@2023 | Hello, Ankit |
+			| 	inputUsername | inputPassword | Hello, Ankit |

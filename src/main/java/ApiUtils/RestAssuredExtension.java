@@ -19,7 +19,7 @@ public class RestAssuredExtension {
 	RequestSpecBuilder builder = new RequestSpecBuilder();
 	public static RequestSpecification Request;
 
-	static String requestUri;
+	static String resourcePath;
 
 	static String baseURI = ReadConfigFile.readConfig("baseURI");
 	static String basePath = ReadConfigFile.readConfig("basePath");
@@ -37,11 +37,11 @@ public class RestAssuredExtension {
 
 	public static void setUrl(String arg0) {
 
-			requestUri= baseURI+basePath+arg0;
+			resourcePath= arg0;
 
 	}
 
-	public static ResponseOptions<Response> PutWithPathParameterAndBody(String pathParameterKey, String pathParameterValue, Map<String, String> body) {
+	public static ResponseOptions<Response> putWithPathParameterAndBody(String pathParameterKey, String pathParameterValue, Map<String, String> body) {
 		Request.pathParam(pathParameterKey,pathParameterValue);
 		Request.body(body);
 
@@ -49,11 +49,16 @@ public class RestAssuredExtension {
 	}
 
 	public static String getUrl(){
-		return requestUri;
+		return resourcePath;
 	}
 
-	public static ResponseOptions<Response> DeleteOpsWithPathParams(String pathParams) {
+	public static ResponseOptions<Response> deleteOpsWithPathParams(String pathParams) {
 		Request.pathParam("id",pathParams);
 		return Request.delete(RestAssuredExtension.getUrl());
+	}
+
+	public static ResponseOptions<Response> createUsers(Map<String, String> body) {
+		return Request.body(body).post(RestAssuredExtension.getUrl());
+
 	}
 }

@@ -31,13 +31,11 @@ public class APISteps {
         body.put(data.get(0).get(2), data.get(1).get(2));
         String pathParameterKey=data.get(0).get(0);
         String pathParameterValue=data.get(1).get(0);
-        response=RestAssuredExtension.PutWithPathParameterAndBody(pathParameterKey,pathParameterValue,body);
+        response=RestAssuredExtension.putWithPathParameterAndBody(pathParameterKey,pathParameterValue,body);
     }
 
     @Then("Status code should be {string}")
     public void thenStatusCodeShouldBe(String statusCode) {
-        System.out.println(response.getBody().prettyPrint());
-        System.out.println(response.getStatusCode());
         AssertionsUtility.getSoftAssert().assertEquals(""+response.getStatusCode(),statusCode);
     }
 
@@ -48,6 +46,20 @@ public class APISteps {
 
     @When("user inputs the following {string}")
     public void userInputsTheFollowing(String pathParams) {
-        response=RestAssuredExtension.DeleteOpsWithPathParams(pathParams);
+        response=RestAssuredExtension.deleteOpsWithPathParams(pathParams);
+    }
+
+    @Given("User wants to add users on {string} resources")
+    public void userWantsToAddUsersOnResources(String url) {
+        RestAssuredExtension.setUrl(url);
+    }
+
+    @When("users inputs the user details")
+    public void usersInputsTheUserDetails(DataTable dataTable) {
+        List<List<String>> lists = dataTable.asLists();
+        Map<String,String> body = new HashMap<>();
+        body.put(lists.get(0).get(0),lists.get(1).get(0));
+        body.put(lists.get(0).get(1),lists.get(1).get(1));
+        response = RestAssuredExtension.createUsers(body);
     }
 }

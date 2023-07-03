@@ -23,3 +23,14 @@
         | id  | statusCode |
         | 112 | 204        |
 
+      @APITests2
+      Scenario Outline: Create users
+        Given User wants to add users on "/users" resources
+        When users inputs the user details
+        |   name    |   job   |
+        |   ankit   |   tester  |
+        Then Status code should be "<statusCode>"
+        Examples:
+        |   statusCode  |
+        |   201         |
+

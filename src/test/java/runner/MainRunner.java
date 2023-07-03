@@ -9,7 +9,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 @CucumberOptions(
 		features = {"src/test/resources/featureFiles"},
 		glue = {"stepDefs"},
-		tags = "@APITests1,@UITests1",
+		tags = "@APITests1,@UITests1,@APITests2",
 		strict = true,
 		dryRun = false,
 		plugin = {"pretty",
