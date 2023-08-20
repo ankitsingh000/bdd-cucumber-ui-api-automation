@@ -22,11 +22,11 @@ public class DriverFactory {
 			URL hubUrl = new URL("http://localhost:4444/wd/hub");
 			switch (browser.toLowerCase()) {
 			case "chrome":
-				WebDriverManager.chromedriver().setup();
+				//WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless=new");
 				//options.addArguments("--window-size=1366,768");
-				//options.setBrowserVersion("116.0.5845.96");
+				options.setBrowserVersion("116.0.5845.96");
 				driver=new ChromeDriver(options);
 				//driver=new RemoteWebDriver(hubUrl, options);
 				break;
