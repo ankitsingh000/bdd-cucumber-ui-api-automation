@@ -27,8 +27,8 @@ public class DriverFactory {
 				options.addArguments("--headless=new");
 				//options.addArguments("--window-size=1366,768");
 				//options.setBrowserVersion("116.0.5845.96");
-				//driver=new ChromeDriver(options);
-				driver=new RemoteWebDriver(hubUrl, options);
+				driver=new ChromeDriver(options);
+				//driver=new RemoteWebDriver(hubUrl, options);
 				break;
 			case "firefox":
 				WebDriverManager.firefoxdriver().setup();
