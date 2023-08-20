@@ -24,8 +24,8 @@ public class DriverFactory {
 			case "chrome":
 				//WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
-				options.addArguments("--headless=new");
-				options.setBinary("/etc/alternatives/google-chrome");
+				options.addArguments("--headless");
+				options.setBinary("/usr/bin/google-chrome-stable");
 				//options.addArguments("--window-size=1366,768");
 				options.setBrowserVersion("116.0.5845.96");
 				driver=new ChromeDriver(options);
