@@ -22,8 +22,8 @@ public class DriverFactory {
 			URL hubUrl = new URL("http://localhost:4444/wd/hub");
 			switch (browser.toLowerCase()) {
 			case "chrome":
-				System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-				//WebDriverManager.chromedriver().setup();
+				//System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+				WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless");
 				options.addArguments("--no-sandbox");
