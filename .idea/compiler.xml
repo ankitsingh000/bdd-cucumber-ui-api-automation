@@ -7,9 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bdd-cucumber-ui-api-automation" />
+        <module name="bdd-cucumber-ui-api-automation-remote" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bdd-cucumber-ui-api-automation-remote" target="1.8" />
       <module name="UI-and-API-Automation-Tests" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -20,14 +20,15 @@ public class DriverFactory {
 
 			switch (browser.toLowerCase()) {
 			case "chrome":
-				WebDriverManager.chromedriver().setup();
+				//WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
+				options.setBrowserVersion("116.0.5845.96");
 				driver = new ChromeDriver(options);
 				break;
 			case "firefox":
 				WebDriverManager.firefoxdriver().setup();
-				DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-				capabilities.setCapability("marionette", true);
+				//DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+				//capabilities.setCapability("marionette", true);
 				driver = new FirefoxDriver();
 				break;
 			case "ie":

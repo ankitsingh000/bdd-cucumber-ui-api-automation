@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.junit.Assert;
@@ -21,7 +22,7 @@ public class CartPage extends DriverFactory {
 	By proceedToBuy = By.xpath("//input[@name='proceedToRetailCheckout']");
 
 	By checkoutHeader = By.xpath("//h1");
-	WebDriverWait wait = new WebDriverWait(driver, 10);
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	
 	public int itemCount() {
 

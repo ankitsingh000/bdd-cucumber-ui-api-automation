@@ -8,17 +8,18 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.Set;
 
 public class SeleniumUtil {
 
     public static WebElement waitForElementToBeClickable(WebDriver driver, By xpath){
-        WebDriverWait wait = new WebDriverWait(driver,60);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         return wait.until(ExpectedConditions.elementToBeClickable(xpath));
     }
 
     public static WebElement waitForElementToBeVisible(WebDriver driver,By xpath){
-        WebDriverWait wait = new WebDriverWait(driver,60);
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(60));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(xpath));
 
 
