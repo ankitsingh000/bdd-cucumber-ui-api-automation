@@ -15,4 +15,4 @@ Feature: Proceed to Checkout
 
     Examples:
       | username   | password    | user         | product                         |
-      | 9330850753 | Mumbai@2023 | Hello, Ankit | Apple iPhone 14 (128 GB) - Blue |
+      | 9330850753 | Mumbai@2023 | Hello, Ankit | Apple iPhone 14 (512 GB) - (Product) RED |
