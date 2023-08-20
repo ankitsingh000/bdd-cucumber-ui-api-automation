@@ -26,7 +26,7 @@ public class DriverFactory {
 				//WebDriverManager.chromedriver().setup();
 				//WebDriverManager.chromedriver().version("116.0.5845.96").setup();
 				ChromeOptions options = new ChromeOptions();
-				options.addArguments("--headless");
+				options.addArguments("--headless=new");
 				options.addArguments("--no-sandbox");
 				options.addArguments("--remote-allow-origins=*");
 
