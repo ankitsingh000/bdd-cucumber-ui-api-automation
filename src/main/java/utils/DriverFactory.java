@@ -26,6 +26,7 @@ public class DriverFactory {
 				//WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless");
+				options.addArguments("--no-sandbox");
 				options.setBinary("/usr/bin/google-chrome-stable");
 				//options.addArguments("--window-size=1366,768");
 				options.setBrowserVersion("116.0.5845.96");
