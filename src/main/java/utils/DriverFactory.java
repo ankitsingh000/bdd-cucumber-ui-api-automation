@@ -1,5 +1,6 @@
 package utils;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import pageObjects.AmazonDashboardPage;
 import pageObjects.LoginPage;
 
@@ -17,13 +19,16 @@ public class DriverFactory {
 		try {
 			String browser = ReadConfigFile.readConfig("browser");
 			String webSiteUrl = ReadConfigFile.readConfig("URL");
-
+			URL hubUrl = new URL("http://localhost:4444/wd/hub");
 			switch (browser.toLowerCase()) {
 			case "chrome":
 				//WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
-				options.setBrowserVersion("116.0.5845.96");
-				driver = new ChromeDriver(options);
+				options.addArguments("--headless=new");
+				//options.addArguments("--window-size=1366,768");
+				//options.setBrowserVersion("116.0.5845.96");
+				//driver=new ChromeDriver(options);
+				driver=new RemoteWebDriver(hubUrl, options);
 				break;
 			case "firefox":
 				WebDriverManager.firefoxdriver().setup();

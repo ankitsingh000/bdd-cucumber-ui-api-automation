@@ -6,14 +6,17 @@ import io.cucumber.java.en.*;
 import org.testng.Assert;
 import pageObjects.LoginPage;
 
+import java.util.logging.Logger;
+
 
 public class LoginStep {
-	
+
 	public LoginPage loginPage = new LoginPage();
 
 	@Given("User Navigate to the Amazon website and clicks on Sign in button")
 	public void user_navigate_to_the_amazon_website() {
 		loginPage.accountSignInButton().click();
+
 	};
 	@When("User enter valid login credentials {string} and {string}")
 	public void user_enter_valid_login_credentials(String username, String password) {
@@ -29,7 +32,9 @@ public class LoginStep {
 	public void verify_that_the_user_is_successfully_logged_in(String user) {
 		try{
 			String actualUserDetails=loginPage.userDetails().getText();
+			System.out.println(actualUserDetails);
 			Assert.assertEquals(actualUserDetails,user,"User Unable to login");
+			System.out.println("Login Successful");
 		}catch (Exception e){
 			e.printStackTrace();
 		}
