@@ -23,7 +23,8 @@ public class DriverFactory {
 			switch (browser.toLowerCase()) {
 			case "chrome":
 				//System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-				WebDriverManager.chromedriver().setup();
+				//WebDriverManager.chromedriver().setup();
+				WebDriverManager.chromedriver().version("116.0.5845.96").setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless");
 				options.addArguments("--no-sandbox");
