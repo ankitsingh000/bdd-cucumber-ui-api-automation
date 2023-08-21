@@ -21,7 +21,7 @@ FROM selenium/standalone-chrome:latest
 COPY --from=builder /app/target/bdd-cucumber-ui-api-automation-0.0.1-SNAPSHOT.jar /app/bdd-cucumber-ui-api-automation-0.0.1-SNAPSHOT.jar
 
 # Copy the Chrome WebDriver executable
-COPY chromedriver /usr/bin/chromedriver
+COPY chromedriver /usr/bin/
 RUN chmod +x /usr/bin/chromedriver
 
 # Set the system property for the Chrome WebDriver
