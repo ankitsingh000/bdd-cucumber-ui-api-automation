@@ -1,5 +1,6 @@
 package utils;
 
+import java.net.InetAddress;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,9 @@ public class DriverFactory {
 		try {
 			String browser = ReadConfigFile.readConfig("browser");
 			String webSiteUrl = ReadConfigFile.readConfig("URL");
+			InetAddress localhost = InetAddress.getLocalHost();
+			String ipAddress = localhost.getHostAddress();
+			System.out.println("IP Address of localhost: " + ipAddress);
 			URL hubUrl = new URL("http://localhost:4444/wd/hub");
 			switch (browser.toLowerCase()) {
 			case "chrome":
