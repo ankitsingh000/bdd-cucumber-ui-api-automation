@@ -26,7 +26,7 @@ COPY chromedriver /usr/bin/
 # Set the system property for the Chrome WebDriver
 ENV WEBDRIVER_PATH=/usr/bin/chromedriver
 
-# Set the entry point to run the Selenium tests
-CMD ["java", "-Dwebdriver.chrome.driver=$WEBDRIVER_PATH", "-jar", "/app/bdd-cucumber-ui-api-automation-0.0.1-SNAPSHOT.jar"]
 # Run the tests using Maven
 RUN mvn test
+# Set the entry point to run the Selenium tests
+CMD ["java", "-Dwebdriver.chrome.driver=$WEBDRIVER_PATH", "-jar", "/app/bdd-cucumber-ui-api-automation-0.0.1-SNAPSHOT.jar"]
