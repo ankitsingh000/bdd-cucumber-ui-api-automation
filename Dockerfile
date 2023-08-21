@@ -4,14 +4,16 @@ FROM maven:3.8.4-openjdk-11 AS builder
 # Set the working directory inside the container
 WORKDIR /app
 
-# Build the project without running tests
-RUN mvn package -DskipTests
-
 # Copy the Maven project's POM file
 COPY pom.xml .
 
+
+
 # Copy the entire project source code
 COPY src ./src
+
+# Build the project without running tests
+RUN mvn package -DskipTests
 # Use an official Selenium/Chrome image as the final image
 FROM selenium/standalone-chrome:latest
 
