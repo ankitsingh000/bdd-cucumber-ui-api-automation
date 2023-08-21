@@ -7,15 +7,8 @@ WORKDIR /app
 # Copy the Maven project's POM file
 COPY pom.xml .
 
-# Download the Maven dependencies
-RUN mvn dependency:go-offline
-
 # Copy the entire project source code
 COPY src ./src
-
-# Run the tests using Maven
-RUN mvn test
-
 # Use an official Selenium/Chrome image as the final image
 FROM selenium/standalone-chrome:latest
 
@@ -31,3 +24,6 @@ ENV WEBDRIVER_PATH=/usr/bin/chromedriver
 
 # Set the entry point to run the Selenium tests
 CMD ["java", "-Dwebdriver.chrome.driver=$WEBDRIVER_PATH", "-jar", "/app/bdd-cucumber-ui-api-automation-remote.jar"]
+
+# Run the tests using Maven
+RUN mvn test
