@@ -22,9 +22,12 @@ public class DriverFactory {
 			String webSiteUrl = ReadConfigFile.readConfig("URL");
 			InetAddress localhost = InetAddress.getLocalHost();
 			String ipAddress = localhost.getHostAddress();
-			System.out.println("IP Address of localhost: " + ipAddress);
-			URL hubUrl = new URL("http://localhost:4444/wd/hub");
-			System.out.println("Knowing HostName"+hubUrl.getHost());
+			// Construct the URL using the IP address
+			String protocol = "http";  // or "https" if applicable
+			int port = 4444;  // Replace with the desired port number
+			String path = "/wd/hub";  // Replace with the desired path
+			URL url = new URL(protocol, ipAddress, port, path);
+			System.out.println("Constructed URL: " + url);
 			switch (browser.toLowerCase()) {
 			case "chrome":
 				//System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
@@ -39,7 +42,7 @@ public class DriverFactory {
 				//options.addArguments("--window-size=1366,768");
 				options.setBrowserVersion("116.0.5845.96");
 				//driver=new ChromeDriver(options);
-				driver=new RemoteWebDriver(hubUrl, options);
+				driver=new RemoteWebDriver(url, options);
 				break;
 			case "firefox":
 				WebDriverManager.firefoxdriver().setup();
