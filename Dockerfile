@@ -22,7 +22,6 @@ COPY --from=builder /app/target/bdd-cucumber-ui-api-automation-0.0.1-SNAPSHOT.ja
 
 # Copy the Chrome WebDriver executable
 COPY chromedriver /usr/bin/
-RUN chmod +x /usr/bin/chromedriver
 
 # Set the system property for the Chrome WebDriver
 ENV WEBDRIVER_PATH=/usr/bin/chromedriver
