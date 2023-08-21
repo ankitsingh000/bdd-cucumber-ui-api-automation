@@ -4,6 +4,9 @@ FROM maven:3.8.4-openjdk-11 AS builder
 # Set the working directory inside the container
 WORKDIR /app
 
+# Build the project without running tests
+RUN mvn package -DskipTests
+
 # Copy the Maven project's POM file
 COPY pom.xml .
 
