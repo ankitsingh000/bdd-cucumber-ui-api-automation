@@ -12,9 +12,8 @@ COPY src ./src
 # Use an official Selenium/Chrome image as the final image
 FROM selenium/standalone-chrome:latest
 
-# Copy the built JAR file from the builder stage
-COPY --from=builder /app/target/bdd-cucumber-ui-api-automation-remote.jar /app/bdd-cucumber-ui-api-automation-remote.jar
-
+# Copy the built JAR file from the builder stage to a different location within the final image
+COPY --from=builder /app/target/bdd-cucumber-ui-api-automation-remote.jar /app/destination-directory/bdd-cucumber-ui-api-automation-remote.jar
 # Copy the Chrome WebDriver executable
 COPY chromedriver /usr/bin/chromedriver
 RUN chmod +x /usr/bin/chromedriver
