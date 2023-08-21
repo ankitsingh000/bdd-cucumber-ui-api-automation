@@ -19,8 +19,9 @@ FROM selenium/standalone-chrome:latest
 
 # Copy the built JAR file from the builder stage
 COPY --from=builder /app/target/bdd-cucumber-ui-api-automation-0.0.1-SNAPSHOT.jar /app/bdd-cucumber-ui-api-automation-0.0.1-SNAPSHOT.jar
-# Install wget and unzip utilities
-RUN apt-get update && apt-get install -y wget unzip
+RUN apt-get update
+RUN apt-get install -y wget unzip
+
 
 # Download ChromeDriver and place it in /usr/bin
 RUN wget -qO /tmp/chromedriver.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/116.0.5845.96/linux64/chromedriver-linux64.zip && \
