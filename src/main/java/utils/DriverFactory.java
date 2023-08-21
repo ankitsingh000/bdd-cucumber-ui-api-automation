@@ -38,7 +38,7 @@ public class DriverFactory {
 				options.addArguments("--no-sandbox");
 				options.addArguments("--remote-allow-origins=*");
 
-				options.setBinary("/usr/bin/google-chrome-stable");
+				//options.setBinary("/usr/bin/google-chrome-stable");
 				//options.addArguments("--window-size=1366,768");
 				options.setBrowserVersion("116.0.5845.96");
 				//driver=new ChromeDriver(options);
