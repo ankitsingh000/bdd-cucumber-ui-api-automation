@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -27,11 +28,13 @@ public class DriverFactory {
 			int port = 4444;  // Replace with the desired port number
 			String path = "/wd/hub";  // Replace with the desired path
 			URL url = new URL(protocol, ipAddress, port, path);
+			//URL url = new URL("http://192.168.0.101:4444/wd/hub");
 			System.out.println("Constructed URL: " + url);
 			switch (browser.toLowerCase()) {
 			case "chrome":
 				//System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-				//WebDriverManager.chromedriver().setup();
+				WebDriverManager.chromedriver().setup();
+
 				//WebDriverManager.chromedriver().version("116.0.5845.96").setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless=new");
@@ -40,7 +43,8 @@ public class DriverFactory {
 
 				//options.setBinary("/usr/bin/google-chrome-stable");
 				//options.addArguments("--window-size=1366,768");
-				options.setBrowserVersion("116.0.5845.96");
+				//options.setBrowserVersion("116.0.5845.96");
+
 				//driver=new ChromeDriver(options);
 				driver=new RemoteWebDriver(url, options);
 				break;
