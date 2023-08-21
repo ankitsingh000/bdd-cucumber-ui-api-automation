@@ -24,6 +24,7 @@ public class DriverFactory {
 			String ipAddress = localhost.getHostAddress();
 			System.out.println("IP Address of localhost: " + ipAddress);
 			URL hubUrl = new URL("http://localhost:4444/wd/hub");
+			System.out.println("Knowing HostName"+hubUrl.getHost());
 			switch (browser.toLowerCase()) {
 			case "chrome":
 				//System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
