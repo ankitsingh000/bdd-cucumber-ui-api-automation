@@ -9,6 +9,12 @@ RUN apt-get update && apt-get install -y maven
 # Set the working directory inside the container
 WORKDIR /app
 
+# Debug: Print the current directory and list the files
+RUN pwd && ls -la
+
+# Run Maven command
+RUN mvn package
+
 # Copy the Maven project's POM file
 COPY pom.xml .
 
