@@ -16,8 +16,6 @@ COPY src ./src
 # Use an official Selenium/Chrome image as the final image
 FROM selenium/standalone-chrome:latest
 
-# Copy the built JAR file from the builder stage
-COPY --from=builder /app/target/bdd-cucumber-ui-api-automation-0.0.1-SNAPSHOT.jar /app/bdd-cucumber-ui-api-automation-0.0.1-SNAPSHOT.jar
 
 # Copy the Chrome WebDriver executable
 COPY chromedriver /usr/bin/
@@ -26,6 +24,10 @@ COPY chromedriver /usr/bin/
 ENV WEBDRIVER_PATH=/usr/bin/chromedriver
 
 # Build the project without running tests
-RUN mvn package -DskipTests
+RUN mvn package
+
+# Copy the built JAR file from the builder stage
+COPY --from=builder /app/target/bdd-cucumber-ui-api-automation-0.0.1-SNAPSHOT.jar /app/bdd-cucumber-ui-api-automation-0.0.1-SNAPSHOT.jar
+
 # Set the entry point to run the Selenium tests
 CMD ["java", "-Dwebdriver.chrome.driver=$WEBDRIVER_PATH", "-jar", "/app/bdd-cucumber-ui-api-automation-0.0.1-SNAPSHOT.jar"]
