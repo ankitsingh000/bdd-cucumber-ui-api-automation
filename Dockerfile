@@ -1,6 +1,11 @@
 # Use an official Maven image as the base image
 FROM maven:3.8.4-openjdk-11 AS builder
 
+FROM openjdk:11
+
+# Install Maven
+RUN apt-get update && apt-get install -y maven
+
 # Set the working directory inside the container
 WORKDIR /app
 
